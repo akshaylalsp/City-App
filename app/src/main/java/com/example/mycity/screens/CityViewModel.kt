@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.update
 
 class CityViewModel: ViewModel() {
 
-    val _uiState = MutableStateFlow(UiState())
+    private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState
 
 

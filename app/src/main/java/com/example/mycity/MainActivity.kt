@@ -25,10 +25,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyCityTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val viewModel: CityViewModel = viewModel()
-                    HomeScreen(navController = rememberNavController(), viewModel = viewModel, modifier = Modifier.padding(innerPadding))
-                }
+                HomeScreen()
             }
         }
     }

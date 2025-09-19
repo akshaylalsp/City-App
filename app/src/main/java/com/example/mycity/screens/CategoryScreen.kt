@@ -27,10 +27,7 @@ import com.example.mycity.data.PlaceDetailData
 fun CategoryScreen(list: List<PlaceDetailData>, onClick: () -> Unit){
     LazyColumn {
         items(list){
-            ListCardItem(
-                it.category,
-                modifier = Modifier.clickable(onClick={onClick()})
-            )
+            StylishCard(it.location, modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 15.dp), onClickAction = { onClick() })
         }
     }
 }
@@ -39,7 +36,7 @@ fun CategoryScreen(list: List<PlaceDetailData>, onClick: () -> Unit){
 fun RecommendationScreen(list: List<PlaceDetailData>,onClick:(PlaceDetailData)->Unit){
     LazyColumn {
         items(list){
-            ListCardItem(it.location, modifier = Modifier.clickable(onClick = {onClick(it)}))
+            StylishCard(it.location, modifier = Modifier.padding(10.dp), onClickAction = { onClick(it) })
         }
     }
 }
@@ -47,11 +44,13 @@ fun RecommendationScreen(list: List<PlaceDetailData>,onClick:(PlaceDetailData)->
 
 @Composable
 fun StylishCard(title:String,modifier: Modifier,onClickAction:()-> Unit){
-    Card(modifier = modifier.fillMaxWidth().height(60.dp), onClick = onClickAction, shape = RoundedCornerShape(20), colors = CardDefaults.cardColors(
+    Card(modifier = modifier
+        .fillMaxWidth()
+        .height(60.dp), onClick = onClickAction, shape = RoundedCornerShape(20), colors = CardDefaults.cardColors(
         containerColor = Color(0xFF7F24F4),   // background color of card
         contentColor = Color.White            // color of content inside the card
     ) ) {
-        Box(modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart){
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart){
 
             Text(title,modifier= Modifier.padding(start = 20.dp), fontSize = 20.sp, fontWeight = FontWeight.Bold)
         }
